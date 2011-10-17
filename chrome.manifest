@@ -1,0 +1,6 @@
+content qubesattachment chrome/content/
+
+overlay chrome://messenger/content/messenger.xul    chrome://qubesattachment/content/messengerOverlay.xul
+overlay chrome://messenger/content/messeneWindow.xul    chrome://qubesattachment/content/messengerOverlay.xul
+
+locale qubesattachment en-US chrome/locale/en-US/

@@ -1,0 +1,1 @@
+pref("qubesattachment.dvmdefault", false);

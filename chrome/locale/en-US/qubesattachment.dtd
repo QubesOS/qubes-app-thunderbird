@@ -1,0 +1,5 @@
+<!ENTITY options1.title "Options">
+<!ENTITY dvmdefault.label "Open attachment in DispVM by default">
+<!ENTITY dvmdefault.accesskey "d">
+<!ENTITY menu_openindvm.label "Open in DispVM">
+<!ENTITY menu_send.label "Send to VM">
