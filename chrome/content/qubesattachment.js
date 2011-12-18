@@ -59,7 +59,11 @@ var qubesattachment = {
                       var saveto = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
                       saveto.followLinks = true;
                       saveto.initWithPath(tempDir);
-                      saveto.append(att.displayName);
+                      if (att.name) {
+                        saveto.append(att.name);
+                      } else {
+                        saveto.append(att.displayName);
+                      }
                       saveto.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0600);
 
                       messenger.saveAttachmentToFile(saveto, att.url, att.uri, att.contentType, listener );

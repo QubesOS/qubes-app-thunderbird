@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?xml-stylesheet href="chrome://qubesattachment/skin/qubesattachment.css" type="text/css"?>
+  
+<!DOCTYPE overlay SYSTEM "chrome://qubesattachment/locale/qubesattachment.dtd">
+
+<overlay id="messengerOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+// This imports our javascript.
+
+<script type="application/x-javascript" src="chrome://qubesattachment/content/qubesattachment.js"></script>
+        
+<script type="application/x-javascript">
+<![CDATA[
+        qubesattachment.init();
+]]>
+</script>
+
+// PREVIEW WINDOW - This is for the attachment popup menu
+
+<menupopup id="attachmentListContext" >
+        <menuitem id="menu_openindvm"
+            label="&menu_openindvm.label;"
+            insertafter="context-openAttachment"
+            oncommand="qubesattachment.doOpenAttachment('/usr/bin/qvm-open-in-dvm', currentAttachments);" />
+        <menuitem id="menu_send"
+            label="&menu_send.label;"
+            insertafter="context-saveAttachment"
+            oncommand="qubesattachment.doOpenAttachment('/usr/lib/qubes/qvm-copy-to-vm.gnome', currentAttachments);" />
+</menupopup>
+
+<menupopup id="attachmentItemContext" >
+        <menuitem id="menu_openindvm"
+            label="&menu_openindvm.label;"
+            insertafter="context-openAttachment"
+            oncommand="qubesattachment.doOpenAttachment('/usr/bin/qvm-open-in-dvm', this.parentNode.attachments);" />
+        <menuitem id="menu_send"
+            label="&menu_send.label;"
+            insertafter="context-saveAttachment"
+            oncommand="qubesattachment.doOpenAttachment('/usr/lib/qubes/qvm-copy-to-vm.gnome', this.parentNode.attachments);" />
+</menupopup>
+
+<toolbarpalette id="attachment-view-toolbar-palette">
+<toolbaritem id="attachmentSaveAll">
+
+<toolbarbutton id="QubesAttachmentsSendAll"
+	class="toolbarbutton-1 msgHeaderView-button qubessendall-button"
+	label="&sendAllAttachmentsButton.label;"
+	tooltiptext="&sendAllAttachmentsButton.tooltip;"
+	oncommand="qubesattachment.doOpenAttachment('/usr/lib/qubes/qvm-copy-to-vm.gnome', currentAttachments); RestoreFocusAfterHdrButton();"/>
+</toolbaritem>
+</toolbarpalette>
+
+
+
+</overlay>

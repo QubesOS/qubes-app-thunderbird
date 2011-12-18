@@ -3,3 +3,5 @@
 <!ENTITY dvmdefault.accesskey "d">
 <!ENTITY menu_openindvm.label "Open in DispVM">
 <!ENTITY menu_send.label "Send to VM">
+<!ENTITY sendAllAttachmentsButton.label "Send all to VM">
+<!ENTITY sendAllAttachmentsButton.tooltip "Send all attachements to another Qubes VM">
