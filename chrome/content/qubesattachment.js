@@ -1,15 +1,18 @@
 var qubesattachment = {
 
     init: function() {
+              /* https://wiki.qubes-os.org/trac/ticket/420
               var CACattachmentView = document.getElementById('attachmentView');
               CACattachmentView.setAttribute("onmousemove", "qubesattachment.doPopup();");
               CACattachmentView.setAttribute("onmousedown", "qubesattachment.doPopup();");
               CACattachmentView.setAttribute("onmouseup", "qubesattachment.doPopup();");
+              */
               var prefs = Components.classes["@mozilla.org/preferences-service;1"]
                   .getService(Components.interfaces.nsIPrefService).getBranch("qubesattachment.");
           },
 
     /* access functions */
+    /* unused now, see https://wiki.qubes-os.org/trac/ticket/420 */
     doPopup: function(){
                  //update menu caption appropriately
                  var attachmentList = document.getElementById('attachmentList');
