@@ -96,20 +96,39 @@ var qubesattachment = {
 };
 
 if (window.location.href == "chrome://messenger/content/messenger.xul") {
-    // Overwrites the original openAttachment function
-    var openAttachmentORIG_20111017 = openAttachment;
-    var openAttachment = function(aAttachment) {
-        var prefs = Components.classes["@mozilla.org/preferences-service;1"]
-            .getService(Components.interfaces.nsIPrefService).getBranch("qubesattachment.");
-        var dvmDefault = prefs.getBoolPref("dvmdefault");
-        if (dvmDefault && aAttachment.contentType != "message/rfc822") {
-            var attList = [];
-            attList.length = 1;
-            attList[0] = aAttachment;
-            qubesattachment.doOpenAttachment('/usr/bin/qvm-open-in-dvm', attList);
-        } else {
-            openAttachmentORIG_20111017(aAttachment);
-        }
-    };
+	var versionChecker =
+		Components.classes["@mozilla.org/xpcom/version-comparator;1"].getService(Components.interfaces.nsIVersionComparator);
+	if (versionChecker.compare(Application.version, "5.0") >= 0) {
+		// Overwrites the original openAttachment function
+		AttachmentInfo.prototype.openAttachmentORIG_20120525 = AttachmentInfo.prototype.open;
+		AttachmentInfo.prototype.open = function() {
+			var prefs = Components.classes["@mozilla.org/preferences-service;1"]
+				.getService(Components.interfaces.nsIPrefService).getBranch("qubesattachment.");
+			var dvmDefault = prefs.getBoolPref("dvmdefault");
+			if (dvmDefault && this.contentType != "message/rfc822") {
+				var attList = [];
+				attList.length = 1;
+				attList[0] = this;
+				qubesattachment.doOpenAttachment('/usr/bin/qvm-open-in-dvm', attList);
+			} else {
+				this.openAttachmentORIG_20120525();
+			}
+		};
+	} else {
+		// Overwrites the original openAttachment function
+		var openAttachmentORIG_20111017 = openAttachment;
+		var openAttachment = function(aAttachment) {
+			var prefs = Components.classes["@mozilla.org/preferences-service;1"]
+				.getService(Components.interfaces.nsIPrefService).getBranch("qubesattachment.");
+			var dvmDefault = prefs.getBoolPref("dvmdefault");
+			if (dvmDefault && aAttachment.contentType != "message/rfc822") {
+				var attList = [];
+				attList.length = 1;
+				attList[0] = aAttachment;
+				qubesattachment.doOpenAttachment('/usr/bin/qvm-open-in-dvm', attList);
+			} else {
+				openAttachmentORIG_20111017(aAttachment);
+			}
+		};
+	}
 }
-
