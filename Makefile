@@ -32,7 +32,11 @@ help:
 	    echo "make update-repo-unstable <-- same, but to -testing repo";\
 	    @exit 0;
 
-rpms:
+rpms: rpms-vm
+
+rpms-dom0:
+
+rpms-vm:
 	rpmbuild --define "_rpmdir rpm/" -bb rpm_spec/thunderbird-qubes.spec
 	rpm --addsign rpm/x86_64/thunderbird-qubes*$(VERSION)*.rpm
 
