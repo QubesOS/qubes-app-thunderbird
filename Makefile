@@ -61,5 +61,11 @@ update-repo-unstable:
 		ln -f $(RPMS_DIR)/x86_64/thunderbird-qubes*$(VERSION)*$$dist*.rpm $$vmrepo/rpm/ ;\
 	done
 
+update-repo-template:
+	for vmrepo in ../template-builder/yum_repo_qubes/* ; do \
+		dist=$$(basename $$vmrepo) ;\
+		ln -f $(RPMS_DIR)/x86_64/thunderbird-qubes*$(VERSION)*$$dist*.rpm $$vmrepo/rpm/ ;\
+	done
+
 install.rdf: install.rdf.template version
 	sed -e "s,<em:version>.*</em:version>,<em:version>`cat version`</em:version>," install.rdf.template > install.rdf
