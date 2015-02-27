@@ -45,21 +45,11 @@ The Qubes email attachments actions for Thunderbird.
 # we operate on the current directory, so no need to unpack anything
 
 %build
-
 make install.rdf
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/%{extdir}
-install -t $RPM_BUILD_ROOT/%{extdir} chrome.manifest install.rdf
-install -d $RPM_BUILD_ROOT/%{extdir}/chrome/locale/en-US
-install -t $RPM_BUILD_ROOT/%{extdir}/chrome/locale/en-US chrome/locale/en-US/qubesattachment.dtd
-install -d $RPM_BUILD_ROOT/%{extdir}/chrome/content
-install -t $RPM_BUILD_ROOT/%{extdir}/chrome/content chrome/content/options.xul chrome/content/qubesattachment.js chrome/content/msgHdrViewOverlay.xul
-install -d $RPM_BUILD_ROOT/%{extdir}/chrome/skin
-install -t $RPM_BUILD_ROOT/%{extdir}/chrome/skin chrome/skin/qubesattachment.css
-install -d $RPM_BUILD_ROOT/%{extdir}/defaults/preferences
-install -t $RPM_BUILD_ROOT/%{extdir}/defaults/preferences defaults/preferences/prefs.js
+make install-vm DESTDIR=$RPM_BUILD_ROOT EXTDIR=%{extdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT

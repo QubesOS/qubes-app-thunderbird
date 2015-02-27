@@ -69,3 +69,15 @@ update-repo-template:
 
 install.rdf: install.rdf.template version
 	sed -e "s,<em:version>.*</em:version>,<em:version>`cat version`</em:version>," install.rdf.template > install.rdf
+
+install-vm:
+	install -d $(DESTDIR)/$(EXTDIR)
+	install -t $(DESTDIR)/$(EXTDIR) chrome.manifest install.rdf
+	install -d $(DESTDIR)/$(EXTDIR)/chrome/locale/en-US
+	install -t $(DESTDIR)/$(EXTDIR)/chrome/locale/en-US chrome/locale/en-US/qubesattachment.dtd
+	install -d $(DESTDIR)/$(EXTDIR)/chrome/content
+	install -t $(DESTDIR)/$(EXTDIR)/chrome/content chrome/content/options.xul chrome/content/qubesattachment.js chrome/content/msgHdrViewOverlay.xul
+	install -d $(DESTDIR)/$(EXTDIR)/chrome/skin
+	install -t $(DESTDIR)/$(EXTDIR)/chrome/skin chrome/skin/qubesattachment.css
+	install -d $(DESTDIR)/$(EXTDIR)/defaults/preferences
+	install -t $(DESTDIR)/$(EXTDIR)/defaults/preferences defaults/preferences/prefs.js

@@ -1,0 +1,21 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/default.mk
+
+export DESTDIR=$(shell readlink -m .)/debian/qubes-thunderbird
+export EXTDIR= /usr/lib/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/qubes-attachment@qubes-os.org
+
+%:
+	dh $@ --with autotools-dev
+
+override_dh_auto_build:
+	dh_clean --keep
+	make install.rdf
+
+override_dh_auto_install:
+	make install-vm
