@@ -1,0 +1,13 @@
+Source: qubes-thunderbird
+Section: admin
+Priority: extra
+Maintainer: Jason Mehring <nrgaway@gmail.com>
+Build-Depends: debhelper (>= 9~), quilt
+Standards-Version: 3.9.5
+Homepage: http://www.qubes-os.org
+
+Package: qubes-thunderbird
+Section: admin
+Architecture: any
+Depends: icedove, ${misc:Depends}
+Description: The Qubes extension for Thunderbird
