@@ -1,3 +1,16 @@
+qubes-thunderbird (1.2.6-1) wheezy; urgency=medium
+
+  [ Jason Mehring ]
+  * Added a Debian package
+  * debian: Added deb/ to .gitignore
+  * Use DEBIAN_PARSER variable provided by builder
+
+  [ Marek Marczykowski-Górecki ]
+  * version 1.2.6
+  * debian: update 'debian' symlink
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Tue, 07 Apr 2015 03:21:14 +0200
+
 qubes-thunderbird (1.2.5-1) unstable; urgency=low
 
   * Initial Release.
