@@ -1,3 +1,10 @@
+qubes-thunderbird (1.2.7-1) wheezy; urgency=medium
+
+  * debian: update 'debian' symlink
+  * debian: update changelog for 1.2.6-1
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Tue, 07 Apr 2015 15:02:34 +0200
+
 qubes-thunderbird (1.2.6-1) wheezy; urgency=medium
 
   [ Jason Mehring ]
