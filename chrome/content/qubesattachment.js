@@ -70,7 +70,7 @@ var qubesattachment = {
                       saveto.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0600);
 
                       messenger.saveAttachmentToFile(saveto, att.url, att.uri, att.contentType, listener );
-                      args[index] = saveto.path;
+                      args[index] = saveto.persistentDescriptor;
               };
 
 
