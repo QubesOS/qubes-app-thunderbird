@@ -1,3 +1,13 @@
+qubes-thunderbird (1.2.8-1) wheezy; urgency=medium
+
+  [ Marek Marczykowski-Górecki ]
+  * gitignore pkgs
+
+  [ Lambono ]
+  * Fix UTF-8 in attachment file names
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Mon, 22 Feb 2016 19:49:22 +0100
+
 qubes-thunderbird (1.2.7-1) wheezy; urgency=medium
 
   * debian: update 'debian' symlink
