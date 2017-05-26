@@ -95,7 +95,9 @@ var qubesattachment = {
 
 };
 
-if (window.location.href == "chrome://messenger/content/messenger.xul") {
+if (window.location.href == "chrome://messenger/content/messenger.xul" ||
+    window.location.href == "chrome://messenger/content/messageWindow.xul")
+{
 	var versionChecker =
 		Components.classes["@mozilla.org/xpcom/version-comparator;1"].getService(Components.interfaces.nsIVersionComparator);
 	if (versionChecker.compare(Application.version, "5.0") >= 0) {
