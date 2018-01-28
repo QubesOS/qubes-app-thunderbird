@@ -20,12 +20,11 @@
 #
 
 
-%{!?version: %define version %(cat version)}
 
 %define extdir %{_libdir}/mozilla/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}/qubes-attachment@qubes-os.org
 
 Name:		thunderbird-qubes
-Version:	%{version}
+Version:	@VERSION@
 Release:	1%{dist}
 Summary:	The Qubes extension for Thunderbird
 
@@ -36,13 +35,13 @@ URL:		http://www.qubes-os.org
 
 Requires:	thunderbird
 
-%define _builddir %(pwd)
+Source0: %{name}-%{version}.tar.gz
 
 %description
 The Qubes email attachments actions for Thunderbird.
 
 %prep
-# we operate on the current directory, so no need to unpack anything
+%setup -q
 
 %build
 make install.rdf
