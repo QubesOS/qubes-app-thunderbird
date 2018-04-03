@@ -64,3 +64,6 @@ rm -rf $RPM_BUILD_ROOT
 %{extdir}/chrome/content/msgHdrViewOverlay.xul
 %{extdir}/chrome/skin/qubesattachment.css
 %{extdir}/defaults/preferences/prefs.js
+
+%changelog
+@CHANGELOG@
