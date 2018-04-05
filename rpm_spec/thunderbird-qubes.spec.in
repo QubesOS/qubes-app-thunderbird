@@ -27,7 +27,7 @@ Name:		thunderbird-qubes
 Version:	@VERSION@
 Release:	1%{dist}
 Summary:	The Qubes extension for Thunderbird
-
+BuildArch:	noarch
 Group:		Qubes
 Vendor:		Invisible Things Lab
 License:	GPL
