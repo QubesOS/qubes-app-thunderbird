@@ -1,3 +1,15 @@
+qubes-thunderbird (1.2.10-1) unstable; urgency=medium
+
+  [ Frédéric Pierret ]
+  * Create .spec.in and Source0
+  * spec.in: add changelog placeholder
+  * spec.in: change to 'noarch' package
+
+  [ Marek Marczykowski-Górecki ]
+  * travis: update distributions
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Fri, 04 May 2018 00:32:45 +0200
+
 qubes-thunderbird (1.2.9-1) unstable; urgency=medium
 
   * travis: initial version
