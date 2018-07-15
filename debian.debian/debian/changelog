@@ -1,3 +1,10 @@
+qubes-thunderbird (1.2.11-1) unstable; urgency=medium
+
+  [ M. Vefa Bicakci ]
+  * Open attachments in DispVMs from message windows
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Sun, 15 Jul 2018 23:46:50 +0200
+
 qubes-thunderbird (1.2.10-1) unstable; urgency=medium
 
   [ Frédéric Pierret ]
