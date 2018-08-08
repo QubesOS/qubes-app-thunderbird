@@ -32,7 +32,7 @@ var qubesattachment = {
 
               var process = Components.classes["@mozilla.org/process/util;1"].createInstance(Components.interfaces.nsIProcess);
               var procPath = Components.classes["@mozilla.org/file/local;1"]
-                  .createInstance(Components.interfaces.nsILocalFile);
+                  .createInstance(Components.interfaces.nsIFile);
 
               procPath.initWithPath(action);
               process.init(procPath);
@@ -41,7 +41,7 @@ var qubesattachment = {
                     observe: function(subject, topic, data) {
                         for (var i = 0; i < args.length; i++) {
                             var filePath = Components.classes["@mozilla.org/file/local;1"]
-                                .createInstance(Components.interfaces.nsILocalFile);
+                                .createInstance(Components.interfaces.nsIFile);
                             filePath.initWithPath(args[i]);
                             filePath.remove(false);
                         }
@@ -59,7 +59,7 @@ var qubesattachment = {
               };
 
               var processAttachment = function(att, index) {
-                      var saveto = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+                      var saveto = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
                       saveto.followLinks = true;
                       saveto.initWithPath(tempDir);
                       if (att.name) {
@@ -91,46 +91,25 @@ var qubesattachment = {
                   }//for
               }
 
-          } //doOpenAttachmant
+          } // doOpenAttachment
 
 };
 
 if (window.location.href == "chrome://messenger/content/messenger.xul" ||
     window.location.href == "chrome://messenger/content/messageWindow.xul")
 {
-	var versionChecker =
-		Components.classes["@mozilla.org/xpcom/version-comparator;1"].getService(Components.interfaces.nsIVersionComparator);
-	if (versionChecker.compare(Application.version, "5.0") >= 0) {
-		// Overwrites the original openAttachment function
-		AttachmentInfo.prototype.openAttachmentORIG_20120525 = AttachmentInfo.prototype.open;
-		AttachmentInfo.prototype.open = function() {
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"]
-				.getService(Components.interfaces.nsIPrefService).getBranch("qubesattachment.");
-			var dvmDefault = prefs.getBoolPref("dvmdefault");
-			if (dvmDefault && this.contentType != "message/rfc822") {
-				var attList = [];
-				attList.length = 1;
-				attList[0] = this;
-				qubesattachment.doOpenAttachment('/usr/bin/qvm-open-in-dvm', attList);
-			} else {
-				this.openAttachmentORIG_20120525();
-			}
-		};
-	} else {
-		// Overwrites the original openAttachment function
-		var openAttachmentORIG_20111017 = openAttachment;
-		var openAttachment = function(aAttachment) {
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"]
-				.getService(Components.interfaces.nsIPrefService).getBranch("qubesattachment.");
-			var dvmDefault = prefs.getBoolPref("dvmdefault");
-			if (dvmDefault && aAttachment.contentType != "message/rfc822") {
-				var attList = [];
-				attList.length = 1;
-				attList[0] = aAttachment;
-				qubesattachment.doOpenAttachment('/usr/bin/qvm-open-in-dvm', attList);
-			} else {
-				openAttachmentORIG_20111017(aAttachment);
-			}
-		};
-	}
+        // Overwrites the original openAttachment function
+        AttachmentInfo.prototype.openAttachment_original = AttachmentInfo.prototype.open;
+        AttachmentInfo.prototype.open = function() {
+                var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("qubesattachment.");
+                var dvmDefault = prefs.getBoolPref("dvmdefault");
+                if (dvmDefault && this.contentType != "message/rfc822") {
+                        var attList = [];
+                        attList.length = 1;
+                        attList[0] = this;
+                        qubesattachment.doOpenAttachment('/usr/bin/qvm-open-in-dvm', attList);
+                } else {
+                        this.openAttachment_original();
+                }
+        };
 }
