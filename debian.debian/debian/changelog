@@ -1,3 +1,10 @@
+qubes-thunderbird (1.2.12-1) unstable; urgency=medium
+
+  [ M. Vefa Bicakci ]
+  * Make compatible with Thunderbird 60
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Thu, 09 Aug 2018 03:42:28 +0200
+
 qubes-thunderbird (1.2.11-1) unstable; urgency=medium
 
   [ M. Vefa Bicakci ]
