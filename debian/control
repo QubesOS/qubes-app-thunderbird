@@ -9,5 +9,5 @@ Homepage: http://www.qubes-os.org
 Package: qubes-thunderbird
 Section: admin
 Architecture: any
-Depends: icedove, ${misc:Depends}
+Depends: icedove | thunderbird, ${misc:Depends}
 Description: The Qubes extension for Thunderbird
