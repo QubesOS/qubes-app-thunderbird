@@ -1,3 +1,12 @@
+qubes-thunderbird (1.2.13-1) unstable; urgency=medium
+
+  * debian: don't create orig.tar.gz manually, simplify packaging
+  * travis: update Fedora and Debian versions
+  * debian: replace deprecated dh_clean --keep with dh_prep
+  * debian: drop autotools from debian/rules
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Fri, 22 Mar 2019 00:15:49 +0100
+
 qubes-thunderbird (1.2.12-1) unstable; urgency=medium
 
   [ M. Vefa Bicakci ]
