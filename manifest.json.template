@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "name": "Qubes Attachments",
+  "description": "Qubes actions for attachments like \"Open in DVM\" or \"Send to VM\"",
+  "version": "@VERSION",
+  "author": "Marek Marczykowski@Invisible Things Lab",
+  "homepage_url": "http://www.qubes-os.org/",
+  "legacy": {
+          "type": "xul",
+          "options": {
+                  "page": "chrome://qubesattachment/content/options.xul"
+          }
+  },
+  "applications": {
+    "gecko": {
+      "id": "qubes-attachment@qubes-os.org",
+      "strict_min_version": "68.0"
+    }
+  }
+}

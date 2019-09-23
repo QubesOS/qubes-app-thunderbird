@@ -1,3 +1,9 @@
+qubes-thunderbird (1.2.14-1) unstable; urgency=medium
+
+  * fixed for Thunderbird 68.0+
+
+ -- Marta Marczykowska-Górecka <marmarta@invisiblethingslab.com>  Mon, 23 Sep 2019 22:45:10 +0100
+
 qubes-thunderbird (1.2.13-1) unstable; urgency=medium
 
   * debian: don't create orig.tar.gz manually, simplify packaging

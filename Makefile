@@ -41,7 +41,7 @@ rpms-vm:
 	rpm --addsign rpm/x86_64/thunderbird-qubes*$(VERSION)*.rpm
 
 clean:
-	rm -f install.rdf
+	rm -f manifest.json
 
 update-repo-current:
 	for vmrepo in ../yum/current-release/current/vm/* ; do \
@@ -67,16 +67,16 @@ update-repo-template:
 		ln -f $(RPMS_DIR)/x86_64/thunderbird-qubes*$(VERSION)*$$dist*.rpm $$vmrepo/rpm/ ;\
 	done
 
-install.rdf: install.rdf.template version
-	sed -e "s,<em:version>.*</em:version>,<em:version>`cat version`</em:version>," install.rdf.template > install.rdf
+manifest.json: manifest.json.template version
+	sed -e "s,@VERSION,`cat version`," manifest.json.template > manifest.json
 
 install-vm:
 	install -d $(DESTDIR)/$(EXTDIR)
-	install -t $(DESTDIR)/$(EXTDIR) chrome.manifest install.rdf
+	install -t $(DESTDIR)/$(EXTDIR) chrome.manifest manifest.json
 	install -d $(DESTDIR)/$(EXTDIR)/chrome/locale/en-US
 	install -t $(DESTDIR)/$(EXTDIR)/chrome/locale/en-US chrome/locale/en-US/qubesattachment.dtd
 	install -d $(DESTDIR)/$(EXTDIR)/chrome/content
-	install -t $(DESTDIR)/$(EXTDIR)/chrome/content chrome/content/options.xul chrome/content/qubesattachment.js chrome/content/msgHdrViewOverlay.xul
+	install -t $(DESTDIR)/$(EXTDIR)/chrome/content chrome/content/options.xul chrome/content/qubesattachment.js chrome/content/messenger.xul
 	install -d $(DESTDIR)/$(EXTDIR)/chrome/skin
 	install -t $(DESTDIR)/$(EXTDIR)/chrome/skin chrome/skin/qubesattachment.css
 	install -d $(DESTDIR)/$(EXTDIR)/defaults/preferences

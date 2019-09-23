@@ -1,7 +1,4 @@
 content qubesattachment chrome/content/
-
-overlay chrome://messenger/content/msgHdrViewOverlay.xul    chrome://qubesattachment/content/msgHdrViewOverlay.xul
-
-locale qubesattachment en-US chrome/locale/en-US/
-
 skin qubesattachment classic/1.0 chrome/skin/
+locale qubesattachment en-US chrome/locale/en-US/
+overlay chrome://messenger/content/messenger.xul chrome://qubesattachment/content/messenger.xul

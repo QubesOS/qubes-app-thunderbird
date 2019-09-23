@@ -1,15 +1,12 @@
-/* The second and third selectors at the bottom are necessary to prevent
+/* The second selector is necessary to prevent
  *    conflicts with installed themes. */
 toolbarbutton.qubessendall-button,
 window:not([active="true"]) toolbarbutton.qubessendall-button {
   list-style-image: url("moz-icon://stock/gtk-save?size=large");
-}
-
-#QubesAttachmentsSendAll {
-  -moz-image-region: rect(0px, 24px, 24px, 0px);
+  -moz-box-orient: horizontal;
 }
 
 toolbar[iconsize="small"] #QubesAttachmentsSendAll {
   list-style-image: url("moz-icon://stock/gtk-save?size=small");
-  -moz-image-region: rect(0px, 16px, 16px, 0px);
+  -moz-box-orient: horizontal;
 }

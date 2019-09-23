@@ -42,17 +42,17 @@
             oncommand="qubesattachment.doOpenAttachment('/usr/lib/qubes/qvm-copy-to-vm.gnome', this.parentNode.attachments);" />
 </menupopup>
 
-<toolbarpalette id="attachment-view-toolbar-palette">
-<toolbaritem id="attachmentSaveAll">
+<hbox id="attachment-view-toolbar">
+<toolbaritem id="qubesattachmentSaveAll">
 
 <toolbarbutton id="QubesAttachmentsSendAll"
 	class="toolbarbutton-1 msgHeaderView-button qubessendall-button"
 	label="&sendAllAttachmentsButton.label;"
 	tooltiptext="&sendAllAttachmentsButton.tooltip;"
+	onclick="event.stopPropagation();"
 	oncommand="qubesattachment.doOpenAttachment('/usr/lib/qubes/qvm-copy-to-vm.gnome', currentAttachments); RestoreFocusAfterHdrButton();"/>
 </toolbaritem>
-</toolbarpalette>
-
+</hbox>
 
 
 </overlay>
