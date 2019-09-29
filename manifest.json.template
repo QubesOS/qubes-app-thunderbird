@@ -8,6 +8,7 @@
   "legacy": {
           "type": "xul",
           "options": {
+                  "open_in_tab": false,
                   "page": "chrome://qubesattachment/content/options.xul"
           }
   },
