@@ -60,6 +60,7 @@ rm -rf $RPM_BUILD_ROOT
 %{extdir}/manifest.json
 %{extdir}/chrome/locale/en-US/qubesattachment.dtd
 %{extdir}/chrome/content/options.xul
+%{extdir}/chrome/content/preferences.js
 %{extdir}/chrome/content/qubesattachment.js
 %{extdir}/chrome/content/messenger.xul
 %{extdir}/chrome/skin/qubesattachment.css

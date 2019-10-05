@@ -76,7 +76,7 @@ install-vm:
 	install -d $(DESTDIR)/$(EXTDIR)/chrome/locale/en-US
 	install -t $(DESTDIR)/$(EXTDIR)/chrome/locale/en-US chrome/locale/en-US/qubesattachment.dtd
 	install -d $(DESTDIR)/$(EXTDIR)/chrome/content
-	install -t $(DESTDIR)/$(EXTDIR)/chrome/content chrome/content/options.xul chrome/content/qubesattachment.js chrome/content/messenger.xul
+	install -t $(DESTDIR)/$(EXTDIR)/chrome/content chrome/content/options.xul chrome/content/qubesattachment.js chrome/content/messenger.xul chrome/content/preferences.js
 	install -d $(DESTDIR)/$(EXTDIR)/chrome/skin
 	install -t $(DESTDIR)/$(EXTDIR)/chrome/skin chrome/skin/qubesattachment.css
 	install -d $(DESTDIR)/$(EXTDIR)/defaults/preferences
