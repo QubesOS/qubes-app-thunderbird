@@ -1,3 +1,10 @@
+qubes-thunderbird (2.0.2-1) unstable; urgency=medium
+
+  [ M. Vefa Bicakci ]
+  * Make sure that preferences.js is packaged
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Sat, 05 Oct 2019 23:51:44 +0200
+
 qubes-thunderbird (2.0.1-1) unstable; urgency=medium
 
   [ M. Vefa Bicakci ]
