@@ -1,3 +1,10 @@
+qubes-thunderbird (2.0.1-1) unstable; urgency=medium
+
+  [ M. Vefa Bicakci ]
+  * Fix preference window for Thunderbird 68
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Sat, 05 Oct 2019 22:10:01 +0200
+
 qubes-thunderbird (2.0.0-1) unstable; urgency=medium
 
   * debian: bump requirements to TB 68+
