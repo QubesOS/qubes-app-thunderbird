@@ -1,3 +1,16 @@
+qubes-thunderbird (2.0.3-1) unstable; urgency=medium
+
+  [ Frédéric Pierret (fepitre) ]
+  * Disable CentOS package build
+  * travis: switch to bionic
+
+  [ Marek Marczykowski-Górecki ]
+  * Install files as non-executable, break long lines in Makefile
+  * Re-enable build for Debian
+  * travis: update Fedora versions
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Mon, 02 Dec 2019 18:11:23 +0100
+
 qubes-thunderbird (2.0.2-1) unstable; urgency=medium
 
   [ M. Vefa Bicakci ]
