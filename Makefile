@@ -72,12 +72,21 @@ manifest.json: manifest.json.template version
 
 install-vm:
 	install -d $(DESTDIR)/$(EXTDIR)
-	install -t $(DESTDIR)/$(EXTDIR) chrome.manifest manifest.json
+	install -m 0644 -t $(DESTDIR)/$(EXTDIR) \
+		chrome.manifest \
+		manifest.json
 	install -d $(DESTDIR)/$(EXTDIR)/chrome/locale/en-US
-	install -t $(DESTDIR)/$(EXTDIR)/chrome/locale/en-US chrome/locale/en-US/qubesattachment.dtd
+	install -m 0644 -t $(DESTDIR)/$(EXTDIR)/chrome/locale/en-US \
+		chrome/locale/en-US/qubesattachment.dtd
 	install -d $(DESTDIR)/$(EXTDIR)/chrome/content
-	install -t $(DESTDIR)/$(EXTDIR)/chrome/content chrome/content/options.xul chrome/content/qubesattachment.js chrome/content/messenger.xul chrome/content/preferences.js
+	install -m 0644 -t $(DESTDIR)/$(EXTDIR)/chrome/content \
+		chrome/content/options.xul \
+		chrome/content/qubesattachment.js \
+		chrome/content/messenger.xul \
+		chrome/content/preferences.js
 	install -d $(DESTDIR)/$(EXTDIR)/chrome/skin
-	install -t $(DESTDIR)/$(EXTDIR)/chrome/skin chrome/skin/qubesattachment.css
+	install -m 0644 -t $(DESTDIR)/$(EXTDIR)/chrome/skin \
+		chrome/skin/qubesattachment.css
 	install -d $(DESTDIR)/$(EXTDIR)/defaults/preferences
-	install -t $(DESTDIR)/$(EXTDIR)/defaults/preferences defaults/preferences/prefs.js
+	install -m 0644 -t $(DESTDIR)/$(EXTDIR)/defaults/preferences \
+		defaults/preferences/prefs.js
