@@ -1,3 +1,13 @@
+qubes-thunderbird (2.0.4-1) unstable; urgency=medium
+
+  [ Foppe ]
+  * Update .travis.yml: fc31 dom0, bionic, repo 4.1
+
+  [ Frédéric Pierret (fepitre) ]
+  * Re-enable build for CentOS 8
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Sat, 04 Apr 2020 05:16:52 +0200
+
 qubes-thunderbird (2.0.3-1) unstable; urgency=medium
 
   [ Frédéric Pierret (fepitre) ]
