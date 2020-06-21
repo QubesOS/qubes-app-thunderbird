@@ -63,9 +63,9 @@ var qubesattachment = {
                       saveto.followLinks = true;
                       saveto.initWithPath(tempDir);
                       if (att.name) {
-                        saveto.append(att.name);
+                        saveto.append(att.name.replace(/\//g, "_"));
                       } else {
-                        saveto.append(att.displayName);
+                        saveto.append(att.displayName.replace(/\//g, "_"));
                       }
                       saveto.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0600);
 
