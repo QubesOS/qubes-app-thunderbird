@@ -1,3 +1,10 @@
+qubes-thunderbird (2.0.5-1) unstable; urgency=medium
+
+  [ MSathieu ]
+  * Replace path separators in attachment names
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Wed, 24 Jun 2020 15:47:48 +0200
+
 qubes-thunderbird (2.0.4-1) unstable; urgency=medium
 
   [ Foppe ]
