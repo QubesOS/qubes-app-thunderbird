@@ -33,6 +33,7 @@ Vendor:		Invisible Things Lab
 License:	GPL
 URL:		http://www.qubes-os.org
 
+BuildRequires:	make
 Requires:	thunderbird >= 68.0
 
 Source0: %{name}-%{version}.tar.gz
