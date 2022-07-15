@@ -1,13 +1,22 @@
-Source: qubes-thunderbird
+Source: thunderbird-qubes
 Section: admin
 Priority: extra
-Maintainer: Jason Mehring <nrgaway@gmail.com>
+Maintainer: unman <unman@thirdeyesecurity.org>
 Build-Depends: debhelper (>= 9~), quilt
 Standards-Version: 3.9.5
 Homepage: http://www.qubes-os.org
 
-Package: qubes-thunderbird
+Package: thunderbird-qubes
 Section: admin
 Architecture: any
 Depends: thunderbird (>= 68.0), ${misc:Depends}
+Replaces: qubes-thunderbird (<< 2.0.6)
+Breaks: qubes-thunderbird (<< 2.0.6)
 Description: The Qubes extension for Thunderbird
+
+Package: qubes-thunderbird
+Section: admin
+Architecture: any
+Depends: thunderbird-qubes, ${misc:Depends}
+Description: transitional package
+ This is a transitional package. It can safely be removed.
