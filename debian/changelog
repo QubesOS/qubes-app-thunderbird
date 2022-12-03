@@ -1,3 +1,15 @@
+thunderbird-qubes (2.0.7-1) unstable; urgency=medium
+
+  [ Frédéric Pierret (fepitre) ]
+  * Drop Travis CI
+  * Add Qubes Builder v2 integration
+  * .qubesbuilder: replace 'spec' by 'build'
+
+  [ unman ]
+  * Rename Debian packages for consistency
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Sat, 03 Dec 2022 16:57:36 +0100
+
 qubes-thunderbird (2.0.6-1) unstable; urgency=medium
 
   [ Frédéric Pierret (fepitre) ]
