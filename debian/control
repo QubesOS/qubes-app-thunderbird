@@ -9,7 +9,7 @@ Homepage: http://www.qubes-os.org
 Package: thunderbird-qubes
 Section: admin
 Architecture: any
-Depends: thunderbird (>= 68.0), ${misc:Depends}
+Depends: thunderbird (>= 102.0), python3, ${misc:Depends}
 Replaces: qubes-thunderbird (<< 2.0.7)
 Breaks: qubes-thunderbird (<< 2.0.7)
 Description: The Qubes extension for Thunderbird

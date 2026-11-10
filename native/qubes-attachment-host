@@ -1,0 +1,104 @@
+#!/usr/bin/python3
+#
+# The Qubes OS Project, http://www.qubes-os.org
+#
+# Native-messaging host for the Qubes Thunderbird MailExtension.
+#
+# It reads one message from the extension:
+#
+#     {"action": "open-in-dvm" | "send-to-vm",
+#      "files": [{"name": "<file name>", "data": "<base64 bytes>"}, ...]}
+#
+# writes the files to a private temporary directory, runs the matching qvm-*
+# command on them, removes the directory, and replies with {"ok": true} or
+# {"ok": false, "error": "..."}.
+#
+# The action only selects one of two fixed commands below; nothing from the
+# message is ever run as a command. File names are reduced to a base name so a
+# message cannot write outside the temporary directory.
+#
+# This program is free software; you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation; either version 2 of the License, or (at your option) any later
+# version.
+
+import base64
+import json
+import os
+import shutil
+import struct
+import subprocess
+import sys
+import tempfile
+
+COMMANDS = {
+    "open-in-dvm": ["/usr/bin/qvm-open-in-dvm"],
+    "send-to-vm": ["/usr/lib/qubes/qvm-copy-to-vm.gnome"],
+}
+
+
+def read_message():
+    raw_length = sys.stdin.buffer.read(4)
+    if len(raw_length) < 4:
+        return None
+    (length,) = struct.unpack("<I", raw_length)
+    data = sys.stdin.buffer.read(length)
+    if len(data) < length:
+        return None
+    return json.loads(data.decode("utf-8"))
+
+
+def write_message(message):
+    data = json.dumps(message).encode("utf-8")
+    sys.stdout.buffer.write(struct.pack("<I", len(data)))
+    sys.stdout.buffer.write(data)
+    sys.stdout.buffer.flush()
+
+
+def safe_name(name):
+    name = os.path.basename(str(name or "")).replace("\\", "_")
+    name = name.strip().lstrip(".")
+    return name or "attachment"
+
+
+def write_files(directory, files):
+    paths = []
+    used = set()
+    for entry in files:
+        name = safe_name(entry.get("name"))
+        candidate = name
+        index = 1
+        while candidate in used:
+            root, ext = os.path.splitext(name)
+            candidate = "{}_{}{}".format(root, index, ext)
+            index += 1
+        used.add(candidate)
+        path = os.path.join(directory, candidate)
+        with open(path, "wb") as handle:
+            handle.write(base64.b64decode(entry["data"]))
+        paths.append(path)
+    return paths
+
+
+def main():
+    message = read_message()
+    if message is None:
+        return
+    try:
+        command = COMMANDS[message["action"]]
+        files = message.get("files") or []
+        if not files:
+            raise ValueError("no files")
+        directory = tempfile.mkdtemp(prefix="qubes-attachment-")
+        try:
+            paths = write_files(directory, files)
+            subprocess.run(command + paths, check=True)
+        finally:
+            shutil.rmtree(directory, ignore_errors=True)
+        write_message({"ok": True})
+    except Exception as error:  # reported back to the extension
+        write_message({"ok": False, "error": str(error)})
+
+
+if __name__ == "__main__":
+    main()

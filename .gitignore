@@ -2,3 +2,5 @@ install.rdf
 rpm/
 deb/
 pkgs/
+manifest.json
+__pycache__/

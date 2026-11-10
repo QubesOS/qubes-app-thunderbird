@@ -1,0 +1,14 @@
+{
+  "extensionName": {
+    "message": "Qubes Attachments"
+  },
+  "menuOpenInDvm": {
+    "message": "Open in DispVM"
+  },
+  "menuSendToVm": {
+    "message": "Send to VM"
+  },
+  "errorTitle": {
+    "message": "Qubes Attachments"
+  }
+}
