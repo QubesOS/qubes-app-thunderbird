@@ -1,0 +1,7 @@
+{
+  "name": "qubes.attachments",
+  "description": "Qubes attachment actions for Thunderbird",
+  "path": "/usr/lib/qubes/qubes-attachment-host",
+  "type": "stdio",
+  "allowed_extensions": ["qubes-attachment@qubes-os.org"]
+}

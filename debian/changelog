@@ -1,3 +1,13 @@
+thunderbird-qubes (3.0.0-1) unstable; urgency=medium
+
+  * Rewrite as a MailExtension for current Thunderbird; the old add-on
+    stopped working with Thunderbird 78. Needs Thunderbird 102 or later.
+  * Keep the "Open in DispVM" and "Send to VM" attachment actions.
+  * Drop the "open attachment in DispVM by default" option; use the
+    app-dispvm service instead.
+
+ -- hippalectryon <6502864+hippalectryon-0@users.noreply.github.com>  Tue, 10 Nov 2026 14:54:43 +0900
+
 thunderbird-qubes (2.0.8-1) unstable; urgency=medium
 
   * debian: fix version in Replaces/Breaks headers

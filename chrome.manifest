@@ -1,4 +1,0 @@
-content qubesattachment chrome/content/
-skin qubesattachment classic/1.0 chrome/skin/
-locale qubesattachment en-US chrome/locale/en-US/
-overlay chrome://messenger/content/messenger.xul chrome://qubesattachment/content/messenger.xul

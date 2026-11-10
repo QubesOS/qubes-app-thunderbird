@@ -34,7 +34,9 @@ License:	GPL
 URL:		http://www.qubes-os.org
 
 BuildRequires:	make
-Requires:	thunderbird >= 68.0
+Requires:	thunderbird >= 102.0
+# provides the mozilla native-messaging-hosts directory
+Requires:	mozilla-filesystem
 
 Source0: %{name}-%{version}.tar.gz
 
@@ -49,7 +51,8 @@ make manifest.json
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install-vm DESTDIR=$RPM_BUILD_ROOT EXTDIR=%{extdir}
+make install-vm DESTDIR=$RPM_BUILD_ROOT EXTDIR=%{extdir} \
+	NMHDIR=%{_libdir}/mozilla/native-messaging-hosts
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -57,15 +60,13 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %dir %{extdir}
-%{extdir}/chrome.manifest
 %{extdir}/manifest.json
-%{extdir}/chrome/locale/en-US/qubesattachment.dtd
-%{extdir}/chrome/content/options.xul
-%{extdir}/chrome/content/preferences.js
-%{extdir}/chrome/content/qubesattachment.js
-%{extdir}/chrome/content/messenger.xul
-%{extdir}/chrome/skin/qubesattachment.css
-%{extdir}/defaults/preferences/prefs.js
+%{extdir}/background.js
+%dir %{extdir}/_locales
+%dir %{extdir}/_locales/en
+%{extdir}/_locales/en/messages.json
+%{_libdir}/mozilla/native-messaging-hosts/qubes.attachments.json
+/usr/lib/qubes/qubes-attachment-host
 
 %changelog
 @CHANGELOG@

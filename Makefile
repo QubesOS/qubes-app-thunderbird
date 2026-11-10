@@ -22,6 +22,11 @@
 RPMS_DIR=rpm/
 VERSION := $(shell cat version)
 
+# Native-messaging host manifest dir (read by Thunderbird on Linux) and the
+# Qubes helper dir the host script is installed into. Overridable by packaging.
+NMHDIR ?= /usr/lib/mozilla/native-messaging-hosts
+QUBESLIBDIR ?= /usr/lib/qubes
+
 help:
 	@echo "Qubes addons main Makefile:" ;\
 	    echo "make rpms                 <--- make all rpms and sign them";\
@@ -70,23 +75,17 @@ update-repo-template:
 manifest.json: manifest.json.template version
 	sed -e "s,@VERSION,`cat version`," manifest.json.template > manifest.json
 
-install-vm:
+install-vm: manifest.json
 	install -d $(DESTDIR)/$(EXTDIR)
 	install -m 0644 -t $(DESTDIR)/$(EXTDIR) \
-		chrome.manifest \
-		manifest.json
-	install -d $(DESTDIR)/$(EXTDIR)/chrome/locale/en-US
-	install -m 0644 -t $(DESTDIR)/$(EXTDIR)/chrome/locale/en-US \
-		chrome/locale/en-US/qubesattachment.dtd
-	install -d $(DESTDIR)/$(EXTDIR)/chrome/content
-	install -m 0644 -t $(DESTDIR)/$(EXTDIR)/chrome/content \
-		chrome/content/options.xul \
-		chrome/content/qubesattachment.js \
-		chrome/content/messenger.xul \
-		chrome/content/preferences.js
-	install -d $(DESTDIR)/$(EXTDIR)/chrome/skin
-	install -m 0644 -t $(DESTDIR)/$(EXTDIR)/chrome/skin \
-		chrome/skin/qubesattachment.css
-	install -d $(DESTDIR)/$(EXTDIR)/defaults/preferences
-	install -m 0644 -t $(DESTDIR)/$(EXTDIR)/defaults/preferences \
-		defaults/preferences/prefs.js
+		manifest.json \
+		background.js
+	install -d $(DESTDIR)/$(EXTDIR)/_locales/en
+	install -m 0644 -t $(DESTDIR)/$(EXTDIR)/_locales/en \
+		_locales/en/messages.json
+	install -d $(DESTDIR)/$(NMHDIR)
+	install -m 0644 -t $(DESTDIR)/$(NMHDIR) \
+		native/qubes.attachments.json
+	install -d $(DESTDIR)/$(QUBESLIBDIR)
+	install -m 0755 -t $(DESTDIR)/$(QUBESLIBDIR) \
+		native/qubes-attachment-host
